@@ -1,0 +1,367 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,600");
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+}
+
+body {
+  background-size: 200%;
+  background-image: linear-gradient(to right, #874da2 0%, #c43a30 49%, #fe9a8b 100%);
+  -webkit-animation: background 15s ease infinite;
+          animation: background 15s ease infinite;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  color: #874da2;
+}
+
+.App {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  height: 100vh;
+}
+
+.Profile {
+  z-index: 5;
+  box-shadow: 0 0.8rem 3rem rgba(135, 77, 162, 0.6);
+  border-radius: 1rem;
+  background: #fdfbfb;
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  margin: 5vh 0 5vh 0;
+  overflow-y: scroll;
+}
+.Profile h1,
+.Profile .email {
+  text-align: center;
+  color: #fdfbfb;
+}
+.Profile h1 {
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+.Profile .profileImage.main {
+  width: 6rem;
+  height: 6rem;
+  margin: 5vh auto 10vh auto;
+}
+.Profile .top-half {
+  display: block;
+  flex: none;
+  padding-top: 5vh;
+  border-radius: 1rem 1rem 0 0;
+  display: flex;
+  flex-direction: column;
+  background: #ea6982;
+  background-image: url("https://zephyo.github.io/22Days/code/7/graphics/clouds.svg"), linear-gradient(0deg, #fe9a8b, #ea6982);
+  background-size: cover;
+  background-position: bottom;
+}
+
+.profileImage {
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.icons {
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+}
+.icons a {
+  flex: auto;
+  color: #f9748f;
+  position: relative;
+  padding: 2vh;
+}
+.icons a svg {
+  width: 100%;
+}
+.icons a.active:after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 0.8vh;
+  background: #f9748f;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.prev-chats {
+  flex: 1 1 auto;
+  margin: 1rem 2rem 0 2rem;
+  overflow-y: scroll;
+}
+
+.prev-chat {
+  display: grid;
+  grid-template-columns: 4.2rem 1fr;
+  grid-template-rows: 2.1rem;
+  grid-column-gap: 1.5rem;
+  grid-template-areas: "pic header" "pic text";
+  justify-items: stretch;
+  align-items: stretch;
+  margin: 1rem 0 1rem 0;
+  line-height: 2.5rem;
+}
+.prev-chat .profileImage {
+  background: linear-gradient(90deg, #ea6982, #fe9a8b);
+  grid-area: pic;
+  width: 4.2rem;
+  height: 4.2rem;
+  padding: 0.2rem;
+  margin: 0.3rem;
+}
+.prev-chat:first-child h2 {
+  color: #874da2;
+}
+.prev-chat h2 {
+  font-weight: 600;
+  grid-area: header;
+  color: #ea6982;
+}
+.prev-chat p {
+  grid-area: text;
+  color: #fe9a8b;
+  text-overflow: fade;
+  white-space: nowrap;
+}
+
+.Conversation {
+  padding-right: 0.5rem;
+  position: relative;
+  box-shadow: 0 0.8rem 3rem rgba(135, 77, 162, 0.6);
+  border-radius: 1rem 0 0 1rem;
+  background: white;
+  margin: 12vh 0 12vh 0;
+  display: flex;
+  flex-direction: column;
+}
+.Conversation svg {
+  color: #ea6982;
+}
+.Conversation button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.Conversation header {
+  flex: none;
+  display: flex;
+  height: 3rem;
+  align-items: center;
+  position: relative;
+}
+.Conversation header .name {
+  flex: auto;
+  text-align: center;
+}
+.Conversation header svg {
+  position: absolute;
+  margin-left: 0.8rem;
+}
+.Conversation .container {
+  flex: auto;
+  width: 22rem;
+  overflow-y: scroll;
+}
+.Conversation .container .Messages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+.Conversation .container .Messages .Message {
+  margin: 0.5rem 0.8rem 0.5rem 0.8rem;
+  max-width: 70%;
+  display: inline-flex;
+  flex-direction: column;
+}
+.Conversation .container .Messages .Message.you {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+.Conversation .container .Messages .Message.you span {
+  border-radius: 1rem 0rem 1rem 1rem;
+  background: #874da2;
+  color: #fdfbfb;
+}
+.Conversation .container .Messages .Message.them span {
+  border-radius: 0 1rem 1rem 1rem;
+  background: #fdfbfb;
+}
+.Conversation .container .Messages .Message span {
+  padding: 1rem;
+  box-shadow: 0.5rem 0.7rem 4rem rgba(135, 77, 162, 0.4);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto;
+}
+.Conversation .container .Messages .Message p {
+  margin-top: 1rem;
+  display: inline-block;
+  color: #f9748f;
+}
+.Conversation .container .Messages .Message:last-child {
+  margin-bottom: 2rem;
+}
+
+.messageInput {
+  background: transparent;
+  font-size: 0.9rem;
+}
+
+input {
+  border: none;
+  padding: 1.5rem;
+  color: #874da2;
+}
+
+input::-webkit-input-placeholder {
+  color: #ea6982;
+}
+
+input:-ms-input-placeholder {
+  color: #ea6982;
+}
+
+input::-ms-input-placeholder {
+  color: #ea6982;
+}
+
+input::placeholder {
+  color: #ea6982;
+}
+
+button {
+  border: none;
+  background: transparent;
+  padding: 1rem 1.5rem 1rem 1rem;
+}
+
+.LoginForm {
+  -webkit-animation: fadeIn 2s ease 0.3s;
+          animation: fadeIn 2s ease 0.3s;
+  z-index: 20;
+  background: linear-gradient(125deg, rgba(234, 105, 130, 0.6), rgba(135, 77, 162, 0.8));
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+}
+.LoginForm .sign-up {
+  box-shadow: 0 0.8rem 3rem rgba(135, 77, 162, 0.6);
+  border-radius: 1rem;
+  background: #fdfbfb;
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  width: 55vh;
+  margin: 15vh auto;
+  padding: 8vh 6vh 8vh 6vh;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.LoginForm .sign-up h1 {
+  font-weight: 800;
+  font-size: 4.5vh;
+  margin-bottom: 3vh;
+  background: linear-gradient(90deg, #ea6982 0%, #fe9a8b 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.LoginForm .sign-up .input {
+  display: block;
+  position: relative;
+}
+.LoginForm .sign-up .input:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 0.3vh;
+  background: linear-gradient(90deg, #ea6982, #fe9a8b);
+}
+.LoginForm .sign-up .input svg {
+  height: 3vh;
+  position: absolute;
+  top: 35%;
+  right: 0.5rem;
+  background: transparent;
+}
+.LoginForm .sign-up input {
+  display: block;
+  padding: 3.5vh;
+  font-size: 2.5vh;
+  background: transparent;
+  position: relative;
+}
+.LoginForm .sign-up button {
+  flex: none;
+  font-size: 2.3vh;
+  width: 70%;
+  color: #fdfbfb;
+  font-weight: 600;
+  margin-top: 5vh;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #ea6982 45%, #fe9a8b 130%);
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+@-webkit-keyframes background {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes background {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
